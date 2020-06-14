@@ -1,0 +1,33 @@
+﻿@model AspNetCoreMvc3.Introduction.EmployeeAddViewModel;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+<form asp-controller="Employee" asp-action="Add">
+    <label asp-for="Employee.Id">ID: </label>
+    <input asp-for="Employee.Id" /><br />
+    <!--
+    This tag helper just types
+    <input type="number" data-val="true" data-val-required="The ID field is required"
+           id="Employee_Id" name="Employee.Id" value="0"/>
+    -->
+    <label asp-for="Employee.FirstName">First Name: </label>
+    <input asp-for="Employee.FirstName" /><br />
+    <label asp-for="Employee.LastName">Last Name: </label>
+    <input asp-for="Employee.LastName" /><br />
+    <label asp-for="Employee.CityId">City: </label>
+    <select asp-for="Employee.CityId" asp-items="Model.Cities"></select>
+    <button type="submit">Add</button>
+</form>
+    <employee-list count="1"></employee-list>
+</body>
+</html>
