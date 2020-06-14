@@ -26,5 +26,22 @@ namespace AspNetCoreMvc3.Introduction.Controllers
             };
             return View(model);
         }
+
+        public StatusCodeResult Index2()
+        {
+            return NotFound();
+        }
+
+        public IActionResult Index3() => RedirectToAction($"Index1");
+
+        public IActionResult Index4()
+        {
+            List<Employee> employees = new List<Employee>
+            {
+                new Employee {Id = 1, FirstName = "Muhammet", LastName = "Kasarcı", CityId = 34},
+                new Employee {Id = 2, FirstName = "Furkan", LastName = "Kasarcı", CityId = 34}
+            };
+            return Json(employees);
+        }
     }
 }

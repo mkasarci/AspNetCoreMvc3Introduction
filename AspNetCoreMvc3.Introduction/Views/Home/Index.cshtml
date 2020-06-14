@@ -11,12 +11,39 @@
     <title>Index</title>
 </head>
 <body>
-<div>
-    <h1>Hello From Index View!</h1>
-    @foreach (var employee in Model.Employees)
-    {
-        @employee.FirstName; <br/>
-    }
-</div>
+    <div>
+        <h1>Hello From Index View!</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>City ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.Employees)
+                {
+                    <tr>
+
+                        <td>@employee.Id</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.CityId</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+        @using (Html.BeginForm()) 
+        //Created disposable form. It Automatically creates <form action="/home/Index" method="post>
+        //tag for us so it is really easy to use. Like it.
+        {
+            <input type="text" id="" name="" />
+            <button type="submit">Submit!</button>
+        }
+
+    </div>
 </body>
 </html>
