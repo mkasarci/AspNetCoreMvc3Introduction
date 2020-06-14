@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+      @using (Html.BeginForm("Index4", "Home"))
+      {
+          <b>Key: </b> 
+          @Html.TextBox("key");  //Create <input type="text" id="key" name="key">
+          <input type="submit" value ="Search"/>
+      }
+</div>
+</body>
+</html>

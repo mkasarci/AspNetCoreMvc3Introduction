@@ -17,7 +17,7 @@ namespace AspNetCoreMvc3.Introduction.Controllers
                 new Employee {Id = 1, FirstName = "Muhammet", LastName = "Kasarcı", CityId = 34},
                 new Employee {Id = 2, FirstName = "Furkan", LastName = "Kasarcı", CityId = 34}
             };
-            List<string> cities = new List<string>{"İstanbul", "Ankara", "Rize"};
+            List<string> cities = new List<string> { "İstanbul", "Ankara", "Rize" };
 
             var model = new EmployeeListViewModel
             {
@@ -34,14 +34,27 @@ namespace AspNetCoreMvc3.Introduction.Controllers
 
         public IActionResult Index3() => RedirectToAction($"Index1");
 
-        public IActionResult Index4()
+        public IActionResult Index4(string key)
         {
             List<Employee> employees = new List<Employee>
             {
                 new Employee {Id = 1, FirstName = "Muhammet", LastName = "Kasarcı", CityId = 34},
                 new Employee {Id = 2, FirstName = "Furkan", LastName = "Kasarcı", CityId = 34}
             };
-            return Json(employees);
+
+            if (string.IsNullOrEmpty(key))
+            {
+                return Json(employees);
+            }
+
+            var result = employees.Where(e => e.FirstName.ToLower().Contains(key.ToLower()));
+
+            return Json(result);
+        }
+
+        public ViewResult EmployeeForm()
+        {
+            return View();
         }
     }
 }
