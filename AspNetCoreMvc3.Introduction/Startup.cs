@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreMvc3.Introduction.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +21,7 @@ namespace AspNetCoreMvc3.Introduction
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();  //Configured first service.
+            services.AddScoped<ICalculator, Calculator18>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
