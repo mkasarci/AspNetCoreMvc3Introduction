@@ -1,17 +1,5 @@
 ﻿@model AspNetCoreMvc3.Introduction.EmployeeAddViewModel;
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add</title>
-</head>
-<body>
 <form asp-controller="Employee" asp-action="Add">
     <label asp-for="Employee.Id">ID: </label>
     <input asp-for="Employee.Id" /><br />
@@ -28,6 +16,8 @@
     <select asp-for="Employee.CityId" asp-items="Model.Cities"></select>
     <button type="submit">Add</button>
 </form>
-    <employee-list count="1"></employee-list>
-</body>
-</html>
+<employee-list count="1"></employee-list>
+
+@section MySection{
+    Some Content
+}

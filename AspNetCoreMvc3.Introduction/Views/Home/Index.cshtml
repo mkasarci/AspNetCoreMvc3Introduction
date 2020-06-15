@@ -9,6 +9,8 @@
 <html>
 <head>
     <title>Index</title>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div>
@@ -26,7 +28,6 @@
                 @foreach (var employee in Model.Employees)
                 {
                     <tr>
-
                         <td>@employee.Id</td>
                         <td>@employee.FirstName</td>
                         <td>@employee.LastName</td>
@@ -41,7 +42,7 @@
         //tag for us so it is really easy to use. Like it.
         {
             <input type="text" id="" name="" />
-            <button type="submit">Submit!</button>
+            <button class="btn btn-success" type="submit" >Submit!</button>
         }
 
     </div>
