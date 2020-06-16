@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreMvc3.Introduction.Models;
 using AspNetCoreMvc3.Introduction.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +23,9 @@ namespace AspNetCoreMvc3.Introduction
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();  //Configured first service.
-            services.AddScoped<ICalculator, Calculator18>();
+            var connection = @"Server=(localdb)\MSSQLLocalDB; Database=SchoolDb; Trusted_Connection=true ";
+            services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connection));
+            services.AddSingleton<ICalculator, Calculator18>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
