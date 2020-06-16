@@ -22,7 +22,8 @@ namespace AspNetCoreMvc3.Introduction
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();  //Configured first service.
+            services.AddMvc();  //Configured first service. I'm not sure if it is really necessary at 3.1. The code still working without this line.
+            services.AddRazorPages();   //We gonna use RazorPages.
             var connection = @"Server=(localdb)\MSSQLLocalDB; Database=SchoolDb; Trusted_Connection=true ";
             services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connection));
             services.AddSingleton<ICalculator, Calculator18>();
@@ -67,6 +68,7 @@ namespace AspNetCoreMvc3.Introduction
         {
             routeBuilder.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
             routeBuilder.MapControllerRoute("MyRoute", "{controller=Employee}/{action=Add}/{id?}");
+            routeBuilder.MapRazorPages();
         }
     }
 }
