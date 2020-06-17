@@ -1,0 +1,7 @@
+﻿@model AspNetCoreMvc3.Introduction.StudentListViewModel
+
+@foreach (var student in Model.Students)
+{
+    <br/>
+    @student.FirstName
+}

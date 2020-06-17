@@ -20,11 +20,13 @@ namespace AspNetCoreMvc3.Introduction.Pages.Studentp
         }
 
         public List<Entities.Student> Students { get; set; } 
-        public void OnGet()
+        public void OnGet(string? search)
         {
-            Students =  _context.Students.ToList();
+            Students = string.IsNullOrEmpty(search) 
+                ? _context.Students.ToList() 
+                : _context.Students.Where(s => s.FirstName.ToLower().Contains(search.ToLower())).ToList();
         }
-
+         
         [BindProperty]
         public Student Student { get; set; }
         public IActionResult OnPost()
