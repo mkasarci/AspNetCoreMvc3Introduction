@@ -1,0 +1,20 @@
+﻿@{
+    Exception exception = ViewData["HandleException"] as Exception;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Error</title>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+<div>
+    <p>@exception.Message</p> <br />
+    @exception.StackTrace
+</div>
+</body>
+</html>

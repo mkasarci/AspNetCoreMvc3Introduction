@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Threading.Tasks;
 using AspNetCoreMvc3.Introduction.Entities;
+using AspNetCoreMvc3.Introduction.Filters;
 using AspNetCoreMvc3.Introduction.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,9 +28,11 @@ namespace AspNetCoreMvc3.Introduction.Controllers
             };
             return View(model);
         }
-
+        [HandleException(ViewName = "Error", ExceptionType = typeof(DivideByZeroException))]
+        [HandleException(ViewName = "Error", ExceptionType = typeof(SecurityException))]
         public StatusCodeResult Index2()
         {
+            throw new SecurityException();
             return NotFound();
         }
 
