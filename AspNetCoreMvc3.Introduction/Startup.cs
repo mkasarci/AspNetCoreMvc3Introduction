@@ -28,6 +28,8 @@ namespace AspNetCoreMvc3.Introduction
             var connection = @"Server=(localdb)\MSSQLLocalDB; Database=SchoolDb; Trusted_Connection=true ";
             services.AddDbContext<SchoolContext>(options => options.UseSqlServer(connection));
             services.AddSingleton<ICalculator, Calculator18>();
+            services.AddSession();
+            services.AddDistributedMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,6 +68,8 @@ namespace AspNetCoreMvc3.Introduction
             //    name: "default",
             //    pattern: "{controller=Home}/{action=Index}/{id?}"));
             //Code could be shortened like this.
+
+            app.UseSession();
 
             app.UseEndpoints(ConfigureRoutes);
         }
