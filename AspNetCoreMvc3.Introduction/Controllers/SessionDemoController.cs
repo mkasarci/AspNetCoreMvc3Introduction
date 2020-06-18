@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreMvc3.Introduction.Entities;
 using AspNetCoreMvc3.Introduction.ExtensionMethods;
+using AspNetCoreMvc3.Introduction.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace AspNetCoreMvc3.Introduction.Controllers
             return "Session Created";
         }
 
+        [HandleException(ViewName = "Error", ExceptionType = typeof(ArgumentNullException))]
         public string GetSessions()
         {
             Student student = HttpContext.Session.GetObject<Student>("student");

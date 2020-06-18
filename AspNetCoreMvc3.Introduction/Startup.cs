@@ -43,7 +43,7 @@ namespace AspNetCoreMvc3.Introduction
                 RequestPath = new PathString("/node_modules")
             });   //Added for use npm packages.
 
-            env.EnvironmentName = EnvironmentName.Production;
+            //env.EnvironmentName = EnvironmentName.Production;
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -72,13 +72,24 @@ namespace AspNetCoreMvc3.Introduction
             app.UseSession();
 
             app.UseEndpoints(ConfigureRoutes);
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "areas",
+            //        template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+            //    );
+            //});
         }
 
         private void ConfigureRoutes(IEndpointRouteBuilder routeBuilder)
         {
             routeBuilder.MapControllerRoute("Default", "{controller=Home}/{action=Index}/{id?}");
             routeBuilder.MapControllerRoute("MyRoute", "{controller=Employee}/{action=Add}/{id?}");
+            
             routeBuilder.MapRazorPages();
+
+            routeBuilder.MapControllerRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
         }
     }
 }
