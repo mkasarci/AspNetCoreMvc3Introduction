@@ -1,0 +1,29 @@
+﻿@model AspNetCoreMvc3.Introduction.Models.Security.LoginViewModel;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Login</title>
+</head>
+<body>
+    <h2 class="text-dark">Login</h2>
+<form asp-controller="Security" asp-action="Login" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <label asp-for="UserName">User Name: </label>
+    <input asp-for="UserName" type="text"/> <br/>
+
+    <label asp-for="Password">Password: </label>
+    <input asp-for="Password" type="password"/> <br />
+
+    <input class="btn btn-success" type="submit"/>
+
+</form>
+</body>
+</html>

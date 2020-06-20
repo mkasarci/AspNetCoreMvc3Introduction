@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspNetCoreMvc3.Introduction.Entities;
 using AspNetCoreMvc3.Introduction.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreMvc3.Introduction.Controllers
 {
@@ -20,6 +21,7 @@ namespace AspNetCoreMvc3.Introduction.Controllers
         }
 
         // GET: Students
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Students.ToListAsync());

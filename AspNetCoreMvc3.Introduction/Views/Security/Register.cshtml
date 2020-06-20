@@ -1,0 +1,38 @@
+﻿@model AspNetCoreMvc3.Introduction.Models.Security.RegisterViewModel;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Register</title>
+</head>
+<body>
+<h3>Register</h3>
+<form asp-controller="Security" asp-action="Register" method="post">
+    
+    <div asp-validation-summary="All"  class="text-danger"></div>
+    
+    <label asp-for="UserName">User Name: </label>
+    <input type="text" asp-for="UserName"/> <br/>
+
+    <label asp-for="Password">Password: </label>
+    <input type="password" asp-for="Password"/> <br/>
+
+    <label asp-for="ConfirmedPassword">Confirm Password: </label>
+    <input type="password" asp-for="ConfirmedPassword"/> <br/>
+
+    <label asp-for="Email">E-Mail: </label>
+    <input type="email" asp-for="Email"/> <br/>
+
+    <label asp-for="Age">Age: </label>
+    <input type="number" asp-for="Age"/> <br/>
+
+    <input class="btn btn-success" type="submit" Submit!/>
+</form>
+</body>
+</html>
